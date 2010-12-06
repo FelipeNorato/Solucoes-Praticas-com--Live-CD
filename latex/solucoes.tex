@@ -1,0 +1,143 @@
+\documentclass[12pt, a4paper, tocpage=plain]{abnt} % Fonte tamanho 12, papel A4, páginas do sumário sem o p.<número da página>
+
+\usepackage[utf8]{inputenc} % Dá suporte para caracteres especiais como acentos e cedilha
+\usepackage[brazil]{babel} % Gera datas e nomes em português com estilo brasileiro
+\usepackage{hyperref} % Permite a criação de hyperlink no documento, como os links usados na referência
+\usepackage[alf]{abntcite} % Define o estilo de referência bibliográfica
+\usepackage{graphicx} % Permite a utilização de imagens no documento
+\usepackage[small]{caption} % Define as legendas das figuras com fontes menores do que o texto
+\usepackage{pslatex} % Define que o formato da letra será Times New Roman
+\usepackage{setspace} % Permite a definição de espaçamento entre linhas
+\usepackage[top=3cm, left=3cm, right=2cm, bottom=2cm]{geometry} % Define as margens da folha
+
+\setcounter{secnumdepth}{3} % Até três subsubsections numeradas
+\setcounter{tocdepth}{3} % Até trẽs subsubsections numeradas
+
+\setlength{\parindent}{1.25cm} % Define o recuo da primeira linha dos parágrafos para 1.25 cm
+
+\renewcommand{\ABNTchapterfont}{\bfseries} % Define a fonte do \chapter
+\renewcommand{\ABNTchaptersize}{\large} % Define o tamanho da fonte do \chapter
+\renewcommand{\ABNTsectionfontsize}{\large} % Define o tamanho da fonte da \section
+\renewcommand{\ABNTsubsectionfontsize}{\large} % Define o tamanho da fonte do \subsection
+\renewcommand{\ABNTsubsubsectionfontsize}{\large} % Define o tamanho da fonte do \subsubsection
+\renewcommand{\ABNTbibliographyname}{REFERÊNCIAS BIBLIOGRÁFICAS} % Modifica o título gerado pelo \bibliographys
+
+\begin{document} % Começo do TCC
+
+\begin{titlepage}
+ \begin{center}
+   {\large CURSO DE TECNOLOGIA EM DESENVOLVIMENTO DE SOFTWARE} \\ [3.5cm]
+   {\large FELIPE NORATO LACERDA} \\
+   {\large JOÃO FELIPE ROQUE MORAES} \\ [4cm]
+   {\large SOLUÇÕES PRÁTICAS COM O LIVE CD} \\
+   \vfill
+   {\large Campos dos Goytacazes/RJ} \\
+   {\large 2010}
+ \end{center}
+\end{titlepage}
+
+\tableofcontents
+
+\chapter{Introdução}
+
+
+Quando se pensa em relação as funcionalidades de um sistema operacional vale ressaltar suas várias ferramentas, programas e configurações. Muitas destas podem ser facilmente adquiridas através da internet, legalmente ou não. Aliás, dizem que com internet podemos fazer qualquer coisa, mas o que fazer quando vírus rompem a fraca segurança de um sistema ou quando de repente a temida tela azul aparece à sua frente? 
+
+Numa tentativa de achar uma solução, surge como alternativa a ideia de utilizar  o Live CD de alguma distribuição Linux, que algum fã do seriado {\it The Big Bang Theory} já tenha comentado, que pode resolver alguns problemas com extrema facilidade.
+
+
+\chapter{Mas afinal, o que é um Live CD?}
+
+Live CD é um CD que contém um sistema operacional (GNU/Linux, BSD ou outro) que não precisa ser instalada no disco rígido do usuário uma vez que o sistema operacional completo é executado diretamente a partir do CD e da memória RAM. Isso mesmo, nem de HD precisa! A maioria dessas distribuições também permitem que se instale o sistema operacional no disco rígido com as mesmas configurações do sistema que roda no CD, caso o usuário assim deseje.
+
+\chapter{Como iniciar pelo Live CD?}
+
+Como usuários da distribuição Ubuntu 10.04, será usado este como S.O. como exemplo.
+
+Entre no Setup de sua BIOS e selecione o Boot pelo dispositivo que está o Linux iniciável. Reinicie e selecione a opção {\bf Teste o Ubuntu Sem Qualquer Mudança No Seu Computador}.
+
+\chapter{Funcionalidades}
+
+
+\section{Recuperar arquivos:}
+
+\begin{quote}
+Se o Windows (ou outro sistema) não inicia, o o live CD do Ubuntu pode resgatá-los. Após iniciado é só ir onde estão os arquivos e copiar para uma outra partição. 
+
+Se o arquivo foi apagado é possível tentar recuperá-lo. Para isso, acesse o Terminal e rode o comando  {\bf sudo fdisk -l}. Verifique qual o disco que contém o Windows e rode o comando {\bf sudo ntfsundelete /dev/sdb1 -u -m arquivo\_desejado}.
+\end{quote}
+
+\section{Particione o HD:}
+
+\begin{quote}
+O live CD Ubuntu também traz uma ferramenta de particionamento. Acesse o Terminal e rode o comando {\bf sudo gparted}. O Gparted apaga, redimensiona e cria partições.
+\end{quote}
+
+\section{Vírus? O que é isso?}
+
+\begin{quote}
+Se a máquina não dá boot e desconfia que é vírus, você pode ir direto na pasta que o vírus está e simplesmente deletá-lo.
+\end{quote}
+
+\section{Faça trabalhos, produza textos, planilhas, programe em Python...}
+
+\begin{quote}
+Como relatado anteriormente, falar sobre um sistema já instalado é fácil, mas o que mais tem em um sistema inicializado sem a instalação? No Live CD Ubuntu temos editores de texto, planilhas eletrônicas, apresentações, imagens(em algumas versões), visualizador PDF, além de no próprio Terminal podermos programar em algumas linguagens como o Python e Ruby com auxílio de um editor de texto simples, o Gedit.
+\end{quote}
+
+\chapter{O Milagroso APT!}
+
+Todas as funcionalidades até aqui foram utilizadas sem necessidade da internet. São muitas as aplicações que vem de forma nativa! Mas como instalar programas utilizando a internet?
+
+Tratando-se de uma turma de Análise e Desenvolvimento de Sistemas a abordagem será pelo Terminal, que é a melhor. Este programa faz uma varredura no repositório de aplicações do Ubuntu, inicia o download e a instala. Para fazer isso é só rodar o comando {\bf sudo apt-get install o\_pacote\_desejado} no Terminal. É uma opção muito mais rápida e segura do que, como os usuários do Windows costumam fazer, procurar na internet o instalador do programa e consequentemente seus cracks ou keygens
+
+\chapter{Voltando as Funcionalidades}
+
+\section{Limpe o HD}
+
+\begin{quote}
+Se precisa formatar a máquina completamente, vá ao Terminal e rode o comando {\bf sudo apt-get install wipe}. Em seguida {\bf sudo fdisk -l} e veja as partições. Use o comando {\bf sudo wipe /dev/sdbnúmero\_da\_partição} para formatar.
+\end{quote}
+
+\section{Navegação sem rastros:}
+
+\begin{quote}
+Se desconfia que seu Windows foi infectado e precisa entrar em sites que demandam segurança máxima (como banco online), use o Live CD. Ele cria um ambiente seguro e não deixa nenhuma informação no HD. Isso pode ser feito quando utilizar uma máquina de outra pessoa - não precisa nem comentar que o Ubuntu já possui nativo o browser Mozila Firefox. Se for necessário o Flash, entre no Terminal e rode {\bf sudo apt-get install ubuntu-restricted-extra}, que irá baixar um pacote contendo vários plugins, incluindo MP3, AVI, MPEG, FLV, Java, entre outros.
+\end{quote}
+
+\section{Lidei com o Windows, logo conheço vírus!}
+
+\begin{quote}
+Outra maneira interessante de retirar vírus de um Windows, que normalmente está infectado, é utilizando o “rastreador de vírus” do Avast, que se encontra facilmente na internet.
+\end{quote}
+
+\chapter{Mas eu tenho que queimar uma mídia?}
+
+No texto acima em “Como iniciar pelo Live CD?”, foi feita uma referência de como dar o Boot selecionando o dispositivo onde o Linux iniciável. Um detalhe é que pode-se fazer um USB inicializável. Para isso vá ao menu {\bf Sistema - Administração - Criador de Disco de Inicialização}. Assim abrirá uma tela onde você pode fazer um disco da própria versão que utiliza na máquina ou pode também selecionar uma imagem de outro Linux e fazer o disco a partir dela (mais informações no link que está nas referencias).
+
+\chapter{Será que eu posso levar o Linux da minha máquina?}
+
+Aprendemos como fazer um USB inicializável, desse modo, pode-se fazer uma cópia do seu sistema. Sim, você pode ter em seu pendrive seu próprio sistema, que com muito carinho você mesmo configurou, podendo assim levá-lo para onde quiser. Para isso baixe o RemasterSys (tutorial no link nas referências).
+
+Mas resumindo, para criar uma cópia do seu sistema rode, após o Remastersys instalado, {\bf sudo remastersys dist} e ele irá criar uma imagem do seu sistema com todos programas, plugins, ferramentas e configurações feitas em sua máquina. E depois rode {\bf sudo remastersys clean}, para limpar os arquivos temporários em sua máquina, que são muitos. Existem outras funcionalidades do Remastersys (contantes no link no final desta página) que não foram abordados, mas que também são muito úteis e interessantes. 
+
+A partir disso pode-se gravar em uma mídia, fazer um USB inicializável, distribuir para a comunidade e assim difundir cada vem mais o conceito de software livre.
+
+\chapter{Referências}
+\url{http://pt.wikipedia.org/wiki/Live_CD} em 29/11/2010
+
+Revista Info, julho/2010, páginas 94 e 95.
+
+Criar um Live CD: 
+
+\url{http://ubunto-rs.blogspot.com/2010/02/criar-um-ubuntu-910-live-usb-do-cd.html} em 30/11/2010
+
+Tutorial Remastersys:
+
+\url{http://ubuntued.info/criar-um-livecd-personalizado-com-o-remastersys} em 30/11/2010
+
+Outras opções do Remastersys:
+
+\url{http://www.dragteam.info/forum/informacoes-dicas-e-tutoriais-geral/28918-remastersys-criar-livecd-ou-distrocd-partir-da-nossa-instalacao-de-ubuntu.html} (parte em inglês, em 30/11/2010)
+
+\end{document} 
